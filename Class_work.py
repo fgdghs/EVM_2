@@ -37,3 +37,42 @@ class Solution:
                 max_sum = cur_sum
 
         return max_sum / k
+    
+    def validateStackSequences(self, pushed: list[int], popped: list[int]) -> bool:
+        
+        stack = []
+        i = 0  
+        
+        for x in pushed:
+            stack.append(x)  
+
+            while stack and stack[-1] == popped[i]:
+                stack.pop()
+                i += 1
+        
+        return len(stack) == 0
+    
+    def asteroidCollision(self, asteroids: list[int]) -> list[int]:
+        stack = []
+
+        for curr in asteroids:
+            while stack and curr < 0 < stack[-1]:
+                if stack[-1] < -curr:
+                    stack.pop()
+                    continue
+                elif stack[-1] == -curr:
+                    stack.pop()
+                    break
+                else:
+                    stack.append(curr)
+        return stack
+    
+
+    
+            
+
+
+
+
+
+
